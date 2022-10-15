@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import './App.css'
 
-function App() {
+export default function App({challengeName, challengeLevel, code, output, handleClick, handleChange, challengUrl}) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="challenge-header">
+        <h1>Sam's CodeWars Challenges</h1>
       </header>
+      <main className="challenge-main">
+        <div className="main-head">
+          <h3><a className="challenge-name" href={challengUrl} target="_blank" rel="noopener noreferrer">{challengeName}</a></h3>
+          <h3>{challengeLevel}</h3>
+        </div>
+        <div className="user-interface">
+          <input className ="ui-input"placeholder="Please enter a number" onChange={handleChange}></input>
+          <button onClick={() => handleClick()}>Run Code</button>
+        </div>
+        <div className="main-code">
+              <textarea id="test-input" className="main-code-textarea" spellCheck="false" defaultValue={code}></textarea>
+          </div>
+        <div className="main-output">
+          <p>{output}</p> 
+        </div>  
+      </main>
     </div>
   );
 }
 
-export default App;
