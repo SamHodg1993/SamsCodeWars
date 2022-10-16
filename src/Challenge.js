@@ -1,39 +1,41 @@
 import React, { useState } from 'react'
 import App from './App'
 
-export default function Challenge() {
+import challengeData from './8KYU/challengeData8KYU';
 
+export default function Challenge() {
+    // State
     const [output, setOutput] =  useState('');
     const [test, setTest] = useState(0);
+    const [currentChallenge, setCurrentChallenge] = useState('Even or odd');
 
-    const challengeName = 'Even or Odd';
-    const challengeLevel = '8KYU';
-    const challengURL = 'https://www.codewars.com/kata/53da3dbb4a5168369a0000fe';
+    // Variables relating to current selected challenge
+    const challengeName = challengeData['Even or Odd'].challengeName;
+    const challengeLevel = challengeData['Even or Odd'].challengeLevel;
+    const challengURL = challengeData['Even or Odd'].challengeURL;
+    const code = challengeData['Even or Odd'].code;
 
-    
+    // function run on user input box
     const handleChange = (event) => {
         setTest(event.target.value);
     }
 
-    function handleClick () {
-        (function oddOrEven (num) {
-            let answer;
-            answer = (num % 2 === 0 ? answer = 'Even' : 'Odd');
-            setOutput(answer);
-        })(test);
+    // function run on selecting challenge to render
+    const dispayChallenge = (string) => {
+        setCurrentChallenge(string);
+        console.log(currentChallenge);
     }
 
-    const code = `
-    function oddOrEven (num) {
-        let answer;
-        answer = (num % 2 === 0 ? answer = 'Even' : 'Odd');
+    // function run on user 'Run Code' button
+    function handleClick () {
+        let answer = challengeData['Even or Odd'].function(test);
         setOutput(answer);
-    };`
 
+    }
 
   return (
     <div>
-        <App challengeName={challengeName} challengeLevel={challengeLevel} code={code} output={output} handleClick={handleClick} handleChange={handleChange} challengURL={challengURL}/>
+        <App challengeName={challengeName} challengeLevel={challengeLevel} code={code} output={output} handleClick={handleClick} handleChange={handleChange} challengURL={challengURL} dispayChallenge={dispayChallenge}/>
     </div>
   )
 }

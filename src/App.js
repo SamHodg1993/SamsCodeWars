@@ -1,11 +1,22 @@
 import React from "react";
 import './App.css'
+import challengeData from "./8KYU/challengeData8KYU";
 
-export default function App({challengeName, challengeLevel, code, output, handleClick, handleChange, challengUrl}) {
+export default function App({challengeName, challengeLevel, code, output, handleClick, handleChange, challengUrl, displayChallenge}) {
+
+  const  challengesArray = Object.values(challengeData);
+
   return (
     <div className="App">
       <header className="challenge-header">
         <h1>Sam's CodeWars Challenges</h1>
+        <select placeholder="Please select a challenge">
+          {challengesArray.map(challenge => {
+            return(
+              <option key={challenge.challengeName} value={challenge.challengeName}>{challenge.challengeName}</option>
+            )
+          })}
+        </select>
       </header>
       <main className="challenge-main">
         <div className="main-head">
