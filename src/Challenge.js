@@ -7,13 +7,14 @@ export default function Challenge() {
     // State
     const [output, setOutput] =  useState('');
     const [test, setTest] = useState(0);
-    const [currentChallenge, setCurrentChallenge] = useState('Even or odd');
+    const [currentChallenge, setCurrentChallenge] = useState('Even or Odd');
 
     // Variables relating to current selected challenge
-    const challengeName = challengeData['Even or Odd'].challengeName;
-    const challengeLevel = challengeData['Even or Odd'].challengeLevel;
-    const challengURL = challengeData['Even or Odd'].challengeURL;
-    const code = challengeData['Even or Odd'].code;
+    const challengeName = challengeData[currentChallenge].challengeName;
+    const challengeLevel = challengeData[currentChallenge].challengeLevel;
+    const challengURL = challengeData[currentChallenge].challengeURL;
+    const code = challengeData[currentChallenge].code;
+    const placeholderText = challengeData[currentChallenge].placeholderText;
 
     // function run on user input box
     const handleChange = (event) => {
@@ -21,21 +22,20 @@ export default function Challenge() {
     }
 
     // function run on selecting challenge to render
-    const dispayChallenge = (string) => {
-        setCurrentChallenge(string);
-        console.log(currentChallenge);
+    const displayChallenge = (event) => {
+        setCurrentChallenge(event.target.value);
     }
 
     // function run on user 'Run Code' button
     function handleClick () {
-        let answer = challengeData['Even or Odd'].function(test);
+        let answer = challengeData[currentChallenge].function(test);
         setOutput(answer);
 
     }
 
   return (
     <div>
-        <App challengeName={challengeName} challengeLevel={challengeLevel} code={code} output={output} handleClick={handleClick} handleChange={handleChange} challengURL={challengURL} dispayChallenge={dispayChallenge}/>
+        <App challengeName={challengeName} challengeLevel={challengeLevel} code={code} output={output} handleClick={handleClick} handleChange={handleChange} challengURL={challengURL} displayChallenge={displayChallenge} currentChallenge={currentChallenge} placeholderText={placeholderText}/>
     </div>
   )
 }

@@ -2,15 +2,15 @@ import React from "react";
 import './App.css'
 import challengeData from "./8KYU/challengeData8KYU";
 
-export default function App({challengeName, challengeLevel, code, output, handleClick, handleChange, challengUrl, displayChallenge}) {
-
+export default function App({challengeName, challengeLevel, code, output, handleClick, handleChange, challengUrl, displayChallenge, currentChallenge, placeholderText}) {
+ 
   const  challengesArray = Object.values(challengeData);
 
   return (
     <div className="App">
       <header className="challenge-header">
         <h1>Sam's CodeWars Challenges</h1>
-        <select placeholder="Please select a challenge">
+        <select value={currentChallenge} onChange={(event) => displayChallenge(event)} >
           {challengesArray.map(challenge => {
             return(
               <option key={challenge.challengeName} value={challenge.challengeName}>{challenge.challengeName}</option>
@@ -24,11 +24,11 @@ export default function App({challengeName, challengeLevel, code, output, handle
           <h3>{challengeLevel}</h3>
         </div>
         <div className="user-interface">
-          <input className ="ui-input"placeholder="Please enter a number" onChange={handleChange}></input>
+          <input className ="ui-input" placeholder={placeholderText} onChange={handleChange}></input>
           <button onClick={() => handleClick()}>Run Code</button>
         </div>
         <div className="main-code">
-              <textarea id="test-input" className="main-code-textarea" spellCheck="false" defaultValue={code}></textarea>
+              <textarea id="test-input" className="main-code-textarea" spellCheck="false" disabled={true} value={code}></textarea>
           </div>
         <div className="main-output">
           <p>{output}</p> 

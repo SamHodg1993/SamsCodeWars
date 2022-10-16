@@ -52,7 +52,7 @@
 }
 
 .main-code{
-  height: 50vh;
+  height: 45vh;
   width: 100%;
 }
 
@@ -84,6 +84,7 @@
 .ui-input{
   position: relative;
   top: 20%;
+  width: 350px;
   background-color: var(--color-light-green);
   height: 2rem;
   color: black;
