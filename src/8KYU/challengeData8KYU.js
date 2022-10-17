@@ -8,7 +8,8 @@ let challengeData = {
             return num % 2 === 0 ? 'Even' : 'Odd';
         }`,
         function: function evenOrOdd(num) {
-            return num % 2 === 0 ? 'Even' : 'Odd';
+          const newNum = parseInt(num);  // This line is just to make the function act as though it was called with a number instead of a string
+            return newNum % 2 === 0 ? 'Even' : 'Odd';
         }
     },
     'Convert a Number to a String!': {
@@ -20,7 +21,9 @@ let challengeData = {
             return num.toString();
           }`,
         function: function numberToString(num) {
-            return num.toString();
+            const newNum = parseInt(num) // This line is just to make the function act as though it was called with a number instead of a string
+            // return num.toString(); would be the correct impletmentation for the function
+            return(`"${newNum}"`)
           }
     },
     'How good are you really?': {
