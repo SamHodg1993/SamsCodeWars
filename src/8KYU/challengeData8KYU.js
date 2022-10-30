@@ -30,28 +30,53 @@ let challengeData = {
         challengeName: 'How good are you really?', //Must be the same as the object key to keep the code working
         challengeLevel: '8KYU',
         challengeURL: 'https://www.codewars.com/kata/5601409514fc93442500010b',
-        placeholderText: 'Please enter an array, [Class Points, Your Points]',
+        placeholderText: 'Please enter an array, see below for further instructions',
         code: `function betterThanAverage(classPoints, yourPoints) {
-            const averageCP = classPoints.reduce((a,b) => a + b, 0) / classPoints.length;
-            return (yourPoints >= averageCP)
-          }`,
-        function: function betterThanAverage(classPoints, yourPoints) {
-            const averageCP = classPoints.reduce((a,b) => a + b, 0) / classPoints.length;
-            return (yourPoints >= averageCP ? 'True' : 'False')
+                const averageCP = classPoints.reduce((a,b) => a + b, 0) / classPoints.length;
+                return (yourPoints >= averageCP)
+          }
+          
+          
+          
+Enter an array of your classmates points split with commas inlcuding no spaces
+Then enter your points
+Split the array of class points and your points with a pipe '|'
+
+
+example - 22,35,43,24,32,54|44
+             class points  |your points`,
+        function: function betterThanAverage(input) {
+            const arr1 = [...input.split('|')[0].split(',')];
+            const arr2 = [...input.split('|')[1].split(',')];
+            const averageCP = arr1.reduce((a,b) => parseInt(a) + parseInt(b), 0) / arr1.length;
+            return (arr2 >= averageCP ? 'True' : 'False')
           }
     },
     'Find the smallest integer in the array': {
         challengeName: 'Find the smallest integer in the array', //Must be the same as the object key to keep the code working
         challengeLevel: '8KYU',
         challengeURL: 'https://www.codewars.com/kata/55a2d7ebe362935a210000b2',
-        placeholderText: 'Please enter an array of integers',
+        placeholderText: 'Please enter an array of integers, see below for further instructions',
         code: `function findSmallestInt(args) {
               let sorted = args.sort(function(a, b){return a - b});
               return sorted[0];
-          }`,
+          }
+          
+          
+//instructions
+Enter an array of numbers, seperated by a comma with no spaces
+
+example - 1,2,3,4,5
+          `,
         function: function findSmallestInt(args) {
-              let sorted = args.sort(function(a, b){return a - b});
-              return sorted[0];
+              const newArgs = [...args.split(',')]
+              let sorted = newArgs.sort(function(a, b){return a - b});
+              if(sorted[0] === '') {
+                return 0
+              }
+              else {
+                return sorted[0];
+              }
             }
     },
 }
