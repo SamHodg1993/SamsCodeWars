@@ -37,13 +37,14 @@ let challengeData = {
           }
           
           
-          
-Enter an array of your classmates points split with commas inlcuding no spaces
-Then enter your points
+Instructions          
+Enter an array of your classmates points split with commas
+Enter your points
 Split the array of class points and your points with a pipe '|'
+There should be no spaces in the input string
 
 
-example - 22,35,43,24,32,54|44
+example : 22,35,43,24,32,54|44
              class points  |your points`,
         function: function betterThanAverage(input) {
             const arr1 = [...input.split('|')[0].split(',')];

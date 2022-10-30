@@ -110,3 +110,13 @@
   color: black;
   border-color: orange;
 }
+
+.level-dropdown{
+  border: none;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.level-dropdown:s{
+  border: none;
+}

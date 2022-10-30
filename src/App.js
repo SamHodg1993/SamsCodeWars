@@ -21,7 +21,10 @@ export default function App({challengeName, challengeLevel, code, output, handle
       <main className="challenge-main">
         <div className="main-head">
           <h3><a className="challenge-name" href={challengUrl} target="_blank" rel="noopener noreferrer">{challengeName}</a></h3>
-          <h3>{challengeLevel}</h3>
+          <select className="level-dropdown">
+            <option><h3>8KYU</h3></option>
+            <option><h3>7KYU</h3></option>
+          </select>
         </div>
         <div className="user-interface">
           <input className ="ui-input" placeholder={placeholderText} onChange={handleChange}></input>
