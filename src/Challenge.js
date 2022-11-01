@@ -1,24 +1,30 @@
 import React, { useState } from 'react'
 import App from './App'
 
-import challengeData from './8KYU/challengeData8KYU';
+import challengeData8KYU from './ChallengesData/8KYU';
+import challengeData7KYU from "./ChallengesData/7KYU";
 
 export default function Challenge() {
     // State
     const [output, setOutput] =  useState('');
     const [test, setTest] = useState(0);
     const [currentChallenge, setCurrentChallenge] = useState('Even or Odd');
+    const [currentLevel, setCurrentLevel] = useState(challengeData8KYU)
 
     // Variables relating to current selected challenge
-    const challengeName = challengeData[currentChallenge].challengeName;
-    const challengeLevel = challengeData[currentChallenge].challengeLevel;
-    const challengURL = challengeData[currentChallenge].challengeURL;
-    const code = challengeData[currentChallenge].code;
-    const placeholderText = challengeData[currentChallenge].placeholderText;
+    const challengeName = currentLevel[currentChallenge].challengeName;
+    const challengURL = currentLevel[currentChallenge].challengeURL;
+    const code = currentLevel[currentChallenge].code;
+    const placeholderText = currentLevel[currentChallenge].placeholderText;
 
     // function run on user input box
-    const handleChange = (event) => {
+    const handleChangeChallenge = (event) => {
         setTest(event.target.value);
+    }
+
+    // function to run on user changing level
+    const handleChangeLevel = (event) => {
+        setCurrentLevel(event.target.value);
     }
 
     // function run on selecting challenge to render
@@ -28,14 +34,14 @@ export default function Challenge() {
 
     // function run on user 'Run Code' button
     function handleClick () {
-        let answer = challengeData[currentChallenge].function(test);
+        let answer = currentLevel[currentChallenge].function(test);
         setOutput(answer);
 
     }
 
   return (
     <div>
-        <App challengeName={challengeName} challengeLevel={challengeLevel} code={code} output={output} handleClick={handleClick} handleChange={handleChange} challengURL={challengURL} displayChallenge={displayChallenge} currentChallenge={currentChallenge} placeholderText={placeholderText}/>
+        <App challengeName={challengeName} code={code} output={output} handleClick={handleClick} handleChangeChallenge={handleChangeChallenge} handleChangeLevel={handleChangeLevel} challengURL={challengURL} displayChallenge={displayChallenge} currentChallenge={currentChallenge} placeholderText={placeholderText} currentLevel={Object.values(currentLevel)}/>
     </div>
   )
 }

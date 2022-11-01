@@ -1,4 +1,4 @@
-let challengeData = {
+let challengeData8KYU = {
     'Even or Odd': {
         challengeName: 'Even or Odd', //Must be the same as the object key to keep the code working
         challengeLevel: '8KYU',
@@ -82,5 +82,5 @@ example - 1,2,3,4,5
     },
 }
 
-export default challengeData;
+export default challengeData8KYU;
 

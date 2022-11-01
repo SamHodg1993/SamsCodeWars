@@ -1,17 +1,16 @@
 import React from "react";
 import './App.css'
-import challengeData from "./8KYU/challengeData8KYU";
+import challengeData8KYU from "./ChallengesData/8KYU";
+import challengeData7KYU from "./ChallengesData/7KYU";
 
-export default function App({challengeName, challengeLevel, code, output, handleClick, handleChange, challengUrl, displayChallenge, currentChallenge, placeholderText}) {
- 
-  const  challengesArray = Object.values(challengeData);
+export default function App({challengeName, code, output, handleClick, handleChangeChallenge, handleChangeLevel, challengUrl, displayChallenge, currentChallenge, placeholderText, currentLevel}) {
 
   return (
     <div className="App">
       <header className="challenge-header">
         <h1>Sam's CodeWars Challenges</h1>
         <select value={currentChallenge} onChange={(event) => displayChallenge(event)} >
-          {challengesArray.map(challenge => {
+          {currentLevel.map(challenge => {
             return(
               <option key={challenge.challengeName} value={challenge.challengeName}>{challenge.challengeName}</option>
             )
@@ -21,13 +20,13 @@ export default function App({challengeName, challengeLevel, code, output, handle
       <main className="challenge-main">
         <div className="main-head">
           <h3><a className="challenge-name" href={challengUrl} target="_blank" rel="noopener noreferrer">{challengeName}</a></h3>
-          <select className="level-dropdown">
-            <option><h3>8KYU</h3></option>
-            <option><h3>7KYU</h3></option>
+          <select className="level-dropdown" onChange={(event) => handleChangeLevel(event)}>
+            <option value={challengeData8KYU}>8KYU</option>
+            <option value={challengeData7KYU}>7KYU</option>
           </select>
         </div>
         <div className="user-interface">
-          <input className ="ui-input" placeholder={placeholderText} onChange={handleChange}></input>
+          <input className ="ui-input" placeholder={placeholderText} onChange={handleChangeChallenge}></input>
           <button onClick={() => handleClick()}>Run Code</button>
         </div>
         <div className="main-code">
